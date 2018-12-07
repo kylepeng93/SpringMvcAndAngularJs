@@ -7,6 +7,13 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>SpringWeb Maven Webapp</name>
   <url>http://maven.apache.org</url>
+   <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <springframework.version>4.3.1.RELEASE</springframework.version>
+        <jackson.version>2.7.5</jackson.version>
+    </properties>
+  
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -17,8 +24,23 @@
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-webmvc</artifactId>
-    	<version>4.1.6.RELEASE</version>
+    	<version>${springframework.version}</version>
     </dependency>
+     <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+     </dependency>
+     <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
   </dependencies>
   <build>
     <finalName>SpringWeb</finalName>
@@ -26,12 +48,22 @@
     	<plugin>
     		<groupId>org.apache.maven.plugins</groupId>
     		<artifactId>maven-compiler-plugin</artifactId>
-    		<version>2.5.1</version>
+    		<version>3.2</version>
     		<configuration>
     			<source>1.8</source>
     			<target>1.8</target>
     		</configuration>
     	</plugin>
+    	<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                    <warName>Spring4MVCAngularJSExample</warName>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
     </plugins>
   </build>
 </project>
